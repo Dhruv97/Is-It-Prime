@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         let myGuess = Int(textField.text!)
         
-        
+        var isPrime = true
         
         if myGuess == nil {
             
@@ -25,36 +25,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         } else if myGuess == 1 {
             
-            self.view.endEditing(true)
-            
-            result.text = "\(myGuess!) is not prime!"
-       
+          isPrime = true
         }
         else if myGuess == 0 {
-            
-            self.view.endEditing(true)
-            
-            result.text = "\(myGuess!) is not prime!"
     
-        
-        } else if myGuess! % 2 != 0 {
+       
+            result.text = "Please enter a number greater than 0!"
+
+        } else {
             
-            self.view.endEditing(true)
-            
-            result.text = "\(myGuess!) is prime!"
-            
-        }else if myGuess! % 2 == 0 {
-            
-            self.view.endEditing(true)
-            
-            
-            // counter++
-            
-            result.text = "\(myGuess!) is not prime!"
+            for (var i = 2; i < myGuess; i++) {
+                
+                if (myGuess! % i == 0) {
           
+                    
+                    isPrime = false
+                }
+                
+            }
+            
         }
         
         
+        if isPrime == true {
+            result.text = "\(myGuess!) is prime!"
+            
+        } else if isPrime == false {
+            result.text = "\(myGuess!) is NOT prime!"
+
+        }
         
         
         
